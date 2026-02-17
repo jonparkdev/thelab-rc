@@ -20,7 +20,12 @@
       "Bash(bd graph:*)",
       "WebFetch(domain:docs.turingpi.com)",
       "Bash(python3:*)",
-      "Bash(pip3 install:*)"
+      "Bash(pip3 install:*)",
+      "Bash(git push:*)",
+      "Bash(bd update:*)",
+      "Bash(bd close:*)",
+      "Bash(bd sync:*)",
+      "Bash(git rm:*)"
     ]
   },
   "hooks": {
