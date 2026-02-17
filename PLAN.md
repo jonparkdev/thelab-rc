@@ -28,9 +28,9 @@ Start with CM4 as a single-node k3s server. Add RK1 nodes later for HA (3-node e
 - **Updates**: Renovate for automated nixpkgs update PRs.
 - **Rollback**: NixOS generations only. etcd snapshots TBD.
 - **Repo structure**: Split repos with `thelab-rc-` prefix:
-  - `thelab-rc-docs` — journal, learning notes, plans (this repo, renamed)
-  - `thelab-rc-infra` — NixOS configs, Colmena, secrets, hardware, image building
-  - `thelab-rc-gitops` — Kubernetes manifests, Helm charts, app deployments
+  - `thelab-rc` — journal, learning notes, plans (this repo, renamed)
+  - `thelab-infra` — NixOS configs, Colmena, secrets, hardware, image building
+  - `thelab-gitops` — Kubernetes manifests, Helm charts, app deployments
 - **Pace**: Ship CM4 node fast, iterate.
 
 ---
@@ -56,19 +56,19 @@ Rename this repo and create two new ones:
 
 ```bash
 # Rename this repo (GitHub + local)
-# thelab-rc -> thelab-rc-docs
+# thelab-rc -> thelab-rc
 
 # Create infra repo
-mkdir thelab-rc-infra && cd thelab-rc-infra && git init
+mkdir thelab-infra && cd thelab-infra && git init
 
 # Create gitops repo
-mkdir thelab-rc-gitops && cd thelab-rc-gitops && git init
+mkdir thelab-gitops && cd thelab-gitops && git init
 ```
 
-**thelab-rc-infra** directory structure:
+**thelab-infra** directory structure:
 
 ```
-thelab-rc-infra/
+thelab-infra/
   flake.nix
   flake.lock
   hosts/
@@ -84,16 +84,16 @@ thelab-rc-infra/
   hive.nix            # Colmena hive definition
 ```
 
-**thelab-rc-gitops** directory structure:
+**thelab-gitops** directory structure:
 
 ```
-thelab-rc-gitops/
+thelab-gitops/
   apps/               # Per-app manifests or Helm values
   system/             # Cluster-level resources (namespaces, RBAC, storage)
   README.md
 ```
 
-RK1 host configs (`tp-node1.nix`, `tp-node2.nix`, `hardware/rk1.nix`) will be added to thelab-rc-infra when RK1 support is ready.
+RK1 host configs (`tp-node1.nix`, `tp-node2.nix`, `hardware/rk1.nix`) will be added to thelab-infra when RK1 support is ready.
 
 ### 1.3 Generate age key for secrets
 
@@ -446,7 +446,7 @@ Week 3:  Phase 4 (custom image) + Phase 6 (Longhorn)
          Build pre-baked CM4 image, mount SATA storage, deploy Longhorn.
 
 Week 4:  Phase 7 (Renovate) + gitops repo setup
-         Set up automated updates. Begin populating thelab-rc-gitops with k8s manifests.
+         Set up automated updates. Begin populating thelab-gitops with k8s manifests.
 ```
 
 ---
