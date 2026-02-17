@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(ssh-keyscan:*)",
+      "Bash(git -C /Users/jonpark/projects/nix-config log --oneline -3)",
+      "Bash(git -C /Users/jonpark/projects/thelab-rc diff JOURNAL.md)",
+      "Bash(git -C /Users/jonpark/projects/nix-config diff CLAUDE.md)",
+      "Bash(git -C /Users/jonpark/projects/nix-config diff README.md)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: add aarch64-linux builder and operational docs\n\nEnable nix.linux-builder for cross-compiling aarch64-linux packages\non macOS via QEMU. Add RUNBOOK.md with builder operational reference\nand update CLAUDE.md to point to it.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git -C /Users/jonpark/projects/thelab-rc add JOURNAL.md CLAUDE.md)",
+      "Bash(git -C /Users/jonpark/projects/thelab-rc commit -m \"$\\(cat <<''EOF''\nfeat: day 3 journal and MOC setup\n\nAdd linux-builder debugging journal entry. Reframe CLAUDE.md as a\nmap of content \\(MOC\\) hub linking to related repos.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /Users/jonpark/projects/nix-config push)",
+      "Bash(bd create:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(bd ready:*)",
+      "Bash(bd graph:*)",
+      "WebFetch(domain:docs.turingpi.com)",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)"
+    ]
+  },
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      }
+    ]
+  }
+}

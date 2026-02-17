@@ -1,7 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 This is a documentation and context repo for a personal homelab journey. It serves as the central hub — journal entries, learning notes, and a map of content (MOC) linking to the repos where actual configuration and code live.
